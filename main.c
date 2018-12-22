@@ -19,7 +19,7 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
     struct ether_header *eth_header;
     eth_header = (struct ether_header *) packet;
     if (ntohs(eth_header->ether_type) != ETHERTYPE_IP) {
-        printf("Not an IP packet. Skipping...\n\n");
+        //printf("Not an IP packet. Skipping...\n\n");
         return;
     }
 
@@ -31,8 +31,8 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
        than what we currently have captured. If the snapshot
        length set with pcap_open_live() is too small, you may
        not have the whole packet. */
-    printf("Total packet available: %d bytes\n", header->caplen);
-    printf("Expected packet size: %d bytes\n", header->len);
+    //printf("Total packet available: %d bytes\n", header->caplen);
+    //printf("Expected packet size: %d bytes\n", header->len);
 
     /* Pointers to start point of various headers */
     const u_char *ip_header;
@@ -53,7 +53,7 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
     /* The IHL is number of 32-bit segments. Multiply
        by four to get a byte count for pointer arithmetic */
     ip_header_length = ip_header_length * 4;
-    printf("IP header length (IHL) in bytes: %d\n", ip_header_length);
+    //printf("IP header length (IHL) in bytes: %d\n", ip_header_length);
 
     /* Now that we know where the IP header is, we can 
        inspect the IP header for a protocol number to 
@@ -61,7 +61,7 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
        Protocol is always the 10th byte of the IP header */
     u_char protocol = *(ip_header + 9);
     if (protocol != IPPROTO_TCP) {
-        printf("Not a TCP packet. Skipping...\n\n");
+        //printf("Not a TCP packet. Skipping...\n\n");
         return;
     }
 
@@ -79,16 +79,16 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
        the IP header length. We multiply by four again to get a
        byte count. */
     tcp_header_length = tcp_header_length * 4;
-    printf("TCP header length in bytes: %d\n", tcp_header_length);
+    //printf("TCP header length in bytes: %d\n", tcp_header_length);
 
     /* Add up all the header sizes to find the payload offset */
     int total_headers_size = ethernet_header_length+ip_header_length+tcp_header_length;
-    printf("Size of all headers combined: %d bytes\n", total_headers_size);
+    //printf("Size of all headers combined: %d bytes\n", total_headers_size);
     payload_length = header->caplen -
         (ethernet_header_length + ip_header_length + tcp_header_length);
-    printf("Payload size: %d bytes\n", payload_length);
+    //printf("Payload size: %d bytes\n", payload_length);
     payload = packet + total_headers_size;
-    printf("Memory address where payload begins: %p\n\n", payload);
+    //printf("Memory address where payload begins: %p\n\n", payload);
 
     /* Print payload in ASCII */
     if (payload_length > 0) {
