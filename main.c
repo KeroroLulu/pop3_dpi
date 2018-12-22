@@ -30,6 +30,7 @@ int main (int argc, char *argv[]) {
 	}
 
 	// a suivre
+    pcap_close (handle);
 
 	exit (EXIT_SUCCESS);
 }
