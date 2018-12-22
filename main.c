@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <pcap.h>
 #include <netinet/in.h>
@@ -90,15 +91,23 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
     payload = packet + total_headers_size;
     //printf("Memory address where payload begins: %p\n\n", payload);
 
-    /* Print payload in ASCII */
+    /* Store the payload */
     if (payload_length > 0) {
-        const u_char *temp_pointer = payload;
-        int byte_count = 0;
-        while (byte_count++ < payload_length) {
-            printf("%c", *temp_pointer);
-            temp_pointer++;
-        }
-        printf("\n");
+
+	size_t raw_length = sizeof (u_char) * (payload_length + 1);
+	char *data = malloc (raw_length);
+	if (data == NULL) {
+
+		perror ("[ERROR] Can't allocate the payload");
+		exit (EXIT_FAILURE);
+	}
+
+	memcpy (data, payload, raw_length);
+	data[payload_length] = '\0';
+
+	fprintf (stdout, "%s\n", data);
+
+	free (data);
     }
 
     return;
@@ -119,7 +128,7 @@ int main (int argc, char *argv[]) {
 
 	if (handle == NULL) {
 
-		printf("Error with the file: %s [%s]\n", argv[1], error_buffer);
+		printf("[ERROR] Can't read the file: %s [%s]\n", argv[1], error_buffer);
 		exit (EXIT_FAILURE);
 	}
 
