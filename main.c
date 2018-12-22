@@ -127,6 +127,9 @@ int main (int argc, char *argv[]) {
   	u_char *my_arguments = NULL;
         pcap_loop(handle, -1, my_packet_handler, my_arguments);
 
+	// Free memory
+	pcap_close (handle);
+
 	exit (EXIT_SUCCESS);
 }
 
