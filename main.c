@@ -134,6 +134,9 @@ int main (int argc, char *argv[]) {
 
 	// Loop and extract the pop3 payload
   	u_char *my_arguments = NULL;
+    struct bpf_program fp;
+    pcap_compile(handle, &fp, "tcp", 0, PCAP_NETMASK_UNKNOWN);
+    pcap_setfilter(handle, &fp);
 		pcap_loop(handle, -1, my_packet_handler, my_arguments);
 
 	// Free memory
