@@ -1,11 +1,20 @@
 CC=gcc
 CFLAGS=-W -Wall -Wextra -pedantic -Wshadow -fsanitize=address
-LDFLAGS=-lpcap
+LDFLAGS=-lpcap -lasan
 EXEC=pop3parser
 SRC= main.c
 OBJ= $(SRC:.c=.o)
 
 all: $(EXEC)
+
+%.tab.c %.tab.h: %.y
+	bison -d $<
+
+lex.yy.c: pop.l pop.tab.h
+	flex pop.l
+
+test-parser: lex.yy.c pop.tab.c pop.tab.h
+	$(CC) -o test-parser pop.tab.c lex.yy.c
 
 pop3parser: $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
@@ -16,7 +25,7 @@ pop3parser: $(OBJ)
 .PHONY: clean mrproper
 
 clean:
-	@rm -rf *.o
+	@rm -rf *.o *.tab.*
 
 mrproper: clean
 	@rm -rf $(EXEC)
