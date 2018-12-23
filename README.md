@@ -1,4 +1,15 @@
-# Implementation of a POP3 parser in C language
+# Implémentation d'un parseur POP3 en langage C
 
-By Benjamin Guighil, Paul Lenczner and Vincent Bonnevalle
+## POP3
 
+**TODO : décrire POP3 dans les grandes lignes**
+
+## Parseur
+
+**TODO : mettre le code du parseur avec les explications**
+
+## Implémentation
+
+**TODO : détailler les règles et comment on a fait pour vérifier si elles sont correctes**
+
+*Par Benjamin Guighil, Paul Lenczner et Vincent Bonnevalle*
