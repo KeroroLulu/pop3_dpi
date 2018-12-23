@@ -7,6 +7,8 @@ extern int yyparse();
 extern FILE* yyin;
 void yyerror(const char* s);
 
+Command_list* list_of_commands___;
+
 Arg_list* make_arg(Value str, Arg_list* next) {
     Arg_list* ret = malloc(sizeof(Arg_list));
     ret->arg = str;
@@ -70,9 +72,11 @@ Value make_string(char* val) {
 %type<cmdlist> command
 %type<cmdlist> pop3
 
-%start pop3
+%start main
 
 %%
+main: pop3 { list_of_commands___ = $1;}
+
 pop3: { $$ = NULL; }
     | command { $$ = $1; }
     ;
@@ -116,13 +120,22 @@ args: NUMBER SPACE args { $$ = make_arg(make_int($1), $3); }
 
 %%
 
-int main() {
-    yyin = stdin;
-    do {
-        yyparse();
-    } while(!feof(yyin));
-    return 0;
-}
+
+// Command_list* parse_messages(FILE* pkg) {
+//     yyin = pkg;
+//     do {
+//         yyparse();
+//     } while(!feof(yyin));
+//     return 0;
+// }
+
+// int main() {
+//     yyin = stdin;
+//     do {
+//         yyparse();
+//     } while(!feof(yyin));
+//     return 0;
+// }
 void yyerror(const char* s) {
     fprintf(stderr, "Parse error: %s\n", s);
     exit(1);
