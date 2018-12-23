@@ -137,11 +137,11 @@ Réponses possibles :
 
 Exemple :
 
-    C: RETR 1
+    C: DELE 1
 
     S: +OK message 1 deleted
 
-    S: RETR 1
+    S: DELE 1
 
     S: -ERR message 1 already deleted
 
