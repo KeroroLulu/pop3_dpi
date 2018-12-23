@@ -8,13 +8,40 @@ typedef enum {
 
 typedef enum {
     Resp,
+    Stat,
+    List,
+    Line,
+    EOML, // End Of MultiLine
+    Retr,
+    Dele,
+    Noop,
+    Rset,
+    Top,
+    Uidl,
+    User,
+    Pass,
+    Apop,
     Quit
 } Type;
+
+enum EValue {
+    EInt,
+    EString
+};
+union UValue {
+    int UInt;
+    char* UString;
+};
+
+typedef struct {
+    union UValue val;
+    enum EValue tag;
+} Value;
 
 typedef char* ccstr;
 
 struct sArg_list {
-    ccstr arg;
+    Value arg;
     struct sArg_list* next;
 };
 typedef struct sArg_list Arg_list;
@@ -30,4 +57,3 @@ struct sCommand_list {
     struct sCommand_list* next;
 };
 typedef struct sCommand_list Command_list;
-

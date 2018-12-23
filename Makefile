@@ -7,10 +7,10 @@ OBJ= $(SRC:.c=.o)
 
 all: $(EXEC)
 
-%.tab.c %.tab.h: %.y
+%.tab.c %.tab.h: %.y types.h
 	bison -d $<
 
-lex.yy.c: pop.l pop.tab.h
+lex.yy.c: pop.l pop.tab.h types.h
 	flex pop.l
 
 test-parser: lex.yy.c pop.tab.c pop.tab.h
