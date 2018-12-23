@@ -5,6 +5,78 @@
 #include <netinet/in.h>
 #include <netinet/if_ether.h>
 
+typedef struct client_requests {
+
+	char *data;
+	struct client_requests *next;
+
+} t_client_requests, *p_client_requests;
+
+p_client_requests create_client_requests (char *data) {
+
+	p_client_requests pcr = malloc (sizeof (t_client_requests));
+
+	if (pcr == NULL) {
+
+		perror ("[ERROR] Can't create a new client request queue");
+		exit (EXIT_FAILURE);
+	}
+
+	pcr->data = data;
+	pcr->next = NULL;
+
+	return pcr;
+};
+
+char *pop_client_requests (p_client_requests *pcr) {
+
+	char *data;
+
+	if ((*pcr)->data == NULL)
+		return NULL;
+
+	data = (*pcr)->data;
+
+	if ((*pcr)->next == NULL)
+		(*pcr)->data = NULL;
+	else
+		*pcr = (*pcr)->next;
+	
+	return data;
+};
+
+void push_client_requests (p_client_requests pcr, char *data) {
+
+	while (pcr->data != NULL && pcr->next != NULL)
+		pcr = (p_client_requests) pcr->next;
+
+	if (pcr->data == NULL) {
+
+		pcr->data = data;
+		return;
+
+	} else
+		pcr->next = (struct client_requests *) create_client_requests (data);
+
+	return;
+};
+
+void debug_client_requests (p_client_requests pcr) {
+
+	fprintf (stdout, "------- START -------\n");
+
+	while (pcr->data != NULL && pcr->next != NULL) {
+
+		fprintf (stdout, "%s\n", pcr->data);
+		pcr = (p_client_requests) pcr->next;
+	}
+
+	if (pcr->data != NULL)
+		fprintf (stdout, "%s\n", pcr->data);
+
+	fprintf (stdout, "------- END -------\n");
+};
+
 /**
  * Display meaningfull information on how to use this program
  */
@@ -134,13 +206,44 @@ int main (int argc, char *argv[]) {
 
 	// Loop and extract the pop3 payload
   	u_char *my_arguments = NULL;
-    struct bpf_program fp;
-    pcap_compile(handle, &fp, "tcp", 0, PCAP_NETMASK_UNKNOWN);
-    pcap_setfilter(handle, &fp);
-		pcap_loop(handle, -1, my_packet_handler, my_arguments);
+
+	struct bpf_program fp;
+	pcap_compile(handle, &fp, "tcp", 0, PCAP_NETMASK_UNKNOWN);
+	pcap_setfilter(handle, &fp);
+	pcap_loop(handle, -1, my_packet_handler, my_arguments);
 
 	// Free memory
 	pcap_close (handle);
+
+
+	// Debug fifo implementation
+	p_client_requests list = create_client_requests (NULL);
+	debug_client_requests (list);
+	list = create_client_requests ("toto");
+	debug_client_requests (list);
+	push_client_requests (list, "titi");
+	push_client_requests (list, "tutu");
+	push_client_requests (list, "tata");
+	debug_client_requests (list);
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	debug_client_requests (list);
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	debug_client_requests (list);
+	push_client_requests (list, "titi");
+	push_client_requests (list, "titi");
+	push_client_requests (list, "titi");
+	push_client_requests (list, "titi");
+	debug_client_requests (list);
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	debug_client_requests (list);
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	debug_client_requests (list);
+	fprintf (stdout, "POP -> %s\n", pop_client_requests (&list));
+	debug_client_requests (list);
 
 	exit (EXIT_SUCCESS);
 }
