@@ -28,6 +28,9 @@ Voici les différentes commandes possibles :
     * APOP
     * CAPA
 
+Dans la suite du rapport si une commande a en paramètre le numéro du message, ce
+dernier ne doit pas être marqué comme supprimé.
+
 ### QUIT
 
 Cette commande ne prend pas d'arguments et à différentes significations selon
@@ -166,18 +169,135 @@ Réponses possibles :
 Exemple :
 
     C: RSET
-    
+
     S: +OK maildrop has 2 messages (320 octets)
 
-### TOP
+### TOP msg n
 
-### UIDL
+Cette commande prend en paramètre le numéro du message et le nombre de ligne qui
+doit être positif. Les deux arguments sont obligatoires. Si le message existe le
+serveur retournera plusieurs lignes. La première ligne sera l'entête suivis des
+n premières lignes du message. Ne peut être utilisé que dans l'état de transaction.
 
-### USER
+Réponses possibles :
 
-### PASS
+* OK+
+* -ERR no such message
 
-### APOP
+Exemple :
+
+    C: TOP 1 10
+
+    S: +OK
+
+    S: <the POP3 server sends the headers of the
+       message, a blank line, and the first 10 lines
+       of the body of the message>
+
+    S: .
+
+    ...
+
+    C: TOP 100 3
+
+    S: -ERR no such message
+
+### UIDL [msg]
+
+Cette commande prend en argument le numéro du message ce qui est optionnel. Si il
+n'y a pas d'arguments le serveur renverra plusieurs réponses qui sera la liste des
+messages qui ne sont pas marqués comme supprimés avec leurs id uniques. Ne peut
+être utilisé que dans l'état de transaction.
+
+Réponses possibles :
+
+* +OK suivit de la liste des id-uniques
+* -ERR no such message
+
+Exemple :
+
+    C: UIDL
+
+    S: +OK
+
+    S: 1 whqtswO00WBw418f9t5JxYwZ
+
+    S: 2 QhdPYR:00WBw1Ph7x7
+
+    S: .
+
+    ...
+
+    C: UIDL 2
+
+    S: +OK 2 QhdPYR:00WBw1Ph7x7
+
+    ...
+
+    C: UIDL 3
+
+    S: -ERR no such message, only 2 messages in maildrop
+
+### USER name et PASS string
+
+Ces commandes doivent être utilisées en ensemble. USER prend en argument le nom
+de la boite mail à laquelle on souhaite se connecté et PASS prend le mot de passe
+de cette dernière. Les arguments sont tous obligatoire. Le client peut également
+choisir de faire QUIT pour arrêter la session.
+Si le serveur donne une réponse positive à USER cela veut dire que le client peut
+essayer de se connecter en utilisant PASS à la boite mail. Si la réponse est
+négative cela veut dire que la boite mail n'existe pas ou n'est pas valide.
+Ces commandes sont à utiliser dans l'état d'authorisation.
+
+Réponses possibles USER :
+
+* +OK name est une boite mail valide
+* -ERR la boite mail n'existe pas
+
+Exemple USER :
+
+    C: USER frated
+
+    S: -ERR sorry, no mailbox for frated here
+
+    ...
+
+    C: USER mrose
+
+    S: +OK mrose is a real hoopy frood
+
+Réponses possibles PASS :
+
+    * +OK la boite mail est vérouillée et prête
+    * -ERR mot de passe invalide
+    * -ERR il n'est pas possible de verouiller la boite mail
+
+Exemple PASS :
+
+    C: USER mrose
+
+    S: +OK mrose is a real hoopy frood
+
+    C: PASS secret
+
+    S: -ERR maildrop already locked
+
+    ...
+
+    C: USER mrose
+
+    S: +OK mrose is a real hoopy frood
+
+    C: PASS secret
+
+    S: +OK mrose's maildrop has 2 messages (320 octets)
+
+### APOP name digest
+
+Cette commande prend en argument le nom de la boite mail en string, et un digest
+MD5 en string également. Les deux arguments sont obligatoires.
+
+Cette commande est à utiliser dans l'état d'authorisation.
 
 ## Parseur
 
