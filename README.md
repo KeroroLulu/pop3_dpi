@@ -2,7 +2,26 @@
 
 ## POP3
 
-**TODO : décrire POP3 dans les grandes lignes**
+POP3 permet d'accéder dynamiquement à une boîte mail se trouvant dans un serveur
+distant. Les opérations sont simples comme lire et supprimer le mail. Pour une
+utilisation plus avancée il faudrait utiliser IMAP4.
+
+Voici les différentes commandes possibles :
+* Principale
+    * QUIT
+    * STAT
+    * LIST
+    * RETR
+    * DELE
+    * NOOP
+    * RSET
+* Optionnelle
+    * TOP
+    * UIDL
+    * USER
+    * PASS
+    * APOP
+    * CAPA
 
 ## Parseur
 
