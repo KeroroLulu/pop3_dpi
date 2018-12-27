@@ -318,7 +318,7 @@ Exemples :
 Dans cet exemple, le secret partagé est le string 'tanstaaf'. Par conséquent,
 l'algorithme MD5 est appliqué à la chaîne
 
-    \<1896.697170952@dbc.mtview.ca.us\>tanstaaf
+    <1896.697170952@dbc.mtview.ca.us>tanstaaf
 
 Qui produit le digest suivant
 
