@@ -296,8 +296,33 @@ Exemple PASS :
 
 Cette commande prend en argument le nom de la boite mail en string, et un digest
 MD5 en string également. Les deux arguments sont obligatoires.
-
+Elle remplace l'utilisation de USER/PASS pour la connexion à la boite mail. Lorsque
+le serveur signale qu'il est prêt il donne un timestamp qui sera ensuite utilisé.
+Il y aura un secret partagé uniquement du client et du serveur qui sera mis à la
+suite du timestamp et chiffré par MD5 puis envoyé par en digest.
 Cette commande est à utiliser dans l'état d'authorisation.
+
+Réponses possibles :
+
+    * +OK maildrop locked and ready
+    * -ERR permission denied
+
+Exemples :
+
+    S: +OK POP3 server ready <1896.697170952@dbc.mtview.ca.us>
+
+    C: APOP mrose c4c9334bac560ecc979e58001b3e22fb
+
+    S: +OK maildrop has 1 message (369 octets)
+
+Dans cet exemple, le secret partagé est le string 'tanstaaf'. Par conséquent,
+l'algorithme MD5 est appliqué à la chaîne
+
+   <1896.697170952@dbc.mtview.ca.us>tanstaaf
+
+Qui produit le digest suivant
+
+   c4c9334bac560ecc979e58001b3e22fb
 
 ## Parseur
 
