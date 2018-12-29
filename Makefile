@@ -16,11 +16,11 @@ lex.yy.c: pop.l pop.tab.h types.h
 test-parser: lex.yy.c pop.tab.c pop.tab.h
 	$(CC) -o test-parser pop.tab.c lex.yy.c
 
-pop3parser: $(OBJ)
-	@$(CC) -o $@ $^ $(LDFLAGS)
+pop3parser: lex.yy.o  pop.tab.o $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 %.o: %.c
-	@$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 .PHONY: clean mrproper
 
