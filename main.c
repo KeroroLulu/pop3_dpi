@@ -5,6 +5,22 @@
 #include <netinet/in.h>
 #include <netinet/if_ether.h>
 
+#include "types.h"
+#include "pop.tab.h"
+
+// typedef size_t yy_size_t;
+// 
+// extern YY_BUFFER_STATE yy_scan_buffer ( char *base, yy_size_t size  );
+
+extern void scan_string(const char*);
+
+Command_list* parse(const char* str) {
+    extern Command_list* list_of_commands___;
+    scan_string(str);
+    yyparse();
+    return list_of_commands___;
+}
+
 typedef struct client_requests {
 
 	char *data;
