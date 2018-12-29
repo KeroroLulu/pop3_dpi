@@ -32,4 +32,10 @@
 (?i:PASS) { return PASS; }
 (?i:APOP) { return APOP; }
 [a-zA-Z0-9]+ { return ANY; }
+[a-zA-Z0-9 \t\.\-_] { return LINE; }
 %%
+
+void scan_string(const char* str)
+{
+    yy_switch_to_buffer(yy_scan_string(str));
+}

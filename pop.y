@@ -51,6 +51,7 @@ Value make_string(char* val) {
 %token<t_status> OK
 %token<t_status> ERR
 %token<sval> ANY
+%token<sval> LINE
 %token<ival> NUMBER
 %token QUIT
 %token STAT
@@ -87,24 +88,24 @@ command: { $$ = NULL; }
        | line command { $$ = make_cmdlist_elt($1, $2); }
        ;
 
-line: args CRLF { Command tmp = { .status = None, .type = Line, .args = $1 }; $$ = tmp; }
+line: LINE CRLF { Command tmp = { .status = None, .type = Line, .args = make_arg(make_string($1), NULL) }; $$ = tmp; }
     | TERMINATOR CRLF CRLF { Command tmp = { .status = None, .type = EOML, .args = NULL }; $$ = tmp; }
     ;
 
 req: QUIT CRLF { Command tmp = { .status = None, .type = Quit, .args = NULL }; $$ = tmp; }
    | STAT CRLF { Command tmp = { .status = None, .type = Stat, .args = NULL }; $$ = tmp; }
+   | LIST CRLF { Command tmp = { .status = None, .type = List, .args = NULL }; $$ = tmp; }
+   | LIST SPACE NUMBER CRLF { Command tmp = { .status = None, .type = List, .args = make_arg(make_int($3), NULL) }; $$ = tmp; }
+   | RETR SPACE NUMBER CRLF { Command tmp = { .status = None, .type = Retr, .args = make_arg(make_int($3), NULL) }; $$ = tmp; }
+   | DELE SPACE NUMBER CRLF { Command tmp = { .status = None, .type = Dele, .args = make_arg(make_int($3), NULL) }; $$ = tmp; }
    | NOOP CRLF { Command tmp = { .status = None, .type = Noop, .args = NULL }; $$ = tmp; }
    | RSET CRLF { Command tmp = { .status = None, .type = Noop, .args = NULL }; $$ = tmp; }
-   | LIST CRLF { Command tmp = { .status = None, .type = List, .args = NULL }; $$ = tmp; }
-   | LIST SPACE args { Command tmp = { .status = None, .type = List, .args = $3 }; $$ = tmp; }
+   | TOP SPACE NUMBER SPACE NUMBER CRLF{ Command tmp = { .status = None, .type = Top, .args = make_arg(make_int($3), make_arg(make_int($5), NULL)) }; $$ = tmp; }
    | UIDL CRLF { Command tmp = { .status = None, .type = UIDL, .args = NULL }; $$ = tmp; }
-   | UIDL SPACE args { Command tmp = { .status = None, .type = Uidl, .args = $3 }; $$ = tmp; }
-   | USER SPACE args { Command tmp = { .status = None, .type = User, .args = $3 }; $$ = tmp; }
-   | PASS SPACE args { Command tmp = { .status = None, .type = Pass, .args = $3 }; $$ = tmp; }
-   | APOP SPACE args { Command tmp = { .status = None, .type = Apop, .args = $3 }; $$ = tmp; }
-   | TOP SPACE args { Command tmp = { .status = None, .type = Top, .args = NULL }; $$ = tmp; }
-   | RETR SPACE args { Command tmp = { .status = None, .type = Retr, .args = $3 }; $$ = tmp; }
-   | DELE SPACE args { Command tmp = { .status = None, .type = Dele, .args = $3 }; $$ = tmp; }
+   | UIDL SPACE NUMBER CRLF { Command tmp = { .status = None, .type = Uidl, .args = make_arg(make_int($3), NULL) }; $$ = tmp; }
+   | USER SPACE ANY CRLF { Command tmp = { .status = None, .type = User, .args = make_arg(make_string($3), NULL) }; $$ = tmp; }
+   | PASS SPACE ANY CRLF { Command tmp = { .status = None, .type = Pass, .args = make_arg(make_string($3), NULL) }; $$ = tmp; }
+   | APOP SPACE ANY SPACE ANY CRLF { Command tmp = { .status = None, .type = Apop, .args = make_arg(make_string($3), make_arg(make_string($5), NULL)) }; $$ = tmp; }
    ;
 
 resp: OK SPACE args { Command tmp = { .status = Ok, .type = Resp, .args = $3 }; $$ = tmp; }
