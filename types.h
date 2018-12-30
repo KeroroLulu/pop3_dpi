@@ -35,7 +35,8 @@ typedef enum {
 
 enum EValue {
     EInt,
-    EString
+    EString,
+    ERespCode
 };
 union UValue {
     int UInt;

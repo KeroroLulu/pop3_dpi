@@ -16,6 +16,15 @@ Arg_list* make_arg(Value str, Arg_list* next) {
     return ret;
 }
 
+Arg_list* concat_args(Arg_list *const lhs, Arg_list *const rhs) {
+    Arg_list* tmp = lhs;
+    while(tmp->next != NULL) {
+        tmp = tmp->next;
+    }
+    tmp->next = rhs;
+    return lhs;
+}
+
 Command_list* make_cmdlist_elt(Command str, Command_list* next) {
     Command_list* ret = malloc(sizeof(Command_list));
     ret->cmd = str;
@@ -29,6 +38,11 @@ Value make_int(int val) {
 }
 Value make_string(char* val) {
     Value ret = { .tag = EString, .val.UString = val };
+    return ret;
+}
+
+Value make_respcode(char* val) {
+    Value ret = { .tag = ERespCode, .val.UString = val };
     return ret;
 }
 
@@ -75,6 +89,7 @@ Value make_string(char* val) {
 %token IMPLEMENTATION
 
 %type<arg_list> args
+%type<arg_list> respcode
 %type<command> resp
 %type<command> req
 %type<command> line
@@ -136,6 +151,12 @@ capa: TOP CRLF { Command tmp = { .status = None, .type = CapaTop, .args = NULL }
 
 resp: OK SPACE args { Command tmp = { .status = Ok, .type = Resp, .args = $3 }; $$ = tmp; }
     | ERR SPACE args { Command tmp = { .status = Err, .type = Resp, .args = $3 }; $$ = tmp; }
+    | OK SPACE "[" respcode "]" SPACE args { Command tmp = { .status = Err, .type = Resp, .args = concat_args($7, $4) }; $$ = tmp; }
+    | ERR SPACE "[" respcode "]" SPACE args { Command tmp = { .status = Err, .type = Resp, .args = concat_args($7, $4) }; $$ = tmp; }
+    ;
+
+respcode: ANY { $$ = make_arg(make_respcode($1), NULL); }
+    | ANY "/" respcode {$$ = make_arg(make_respcode($1), $3); }
     ;
 
 args: NUMBER SPACE args { $$ = make_arg(make_int($1), $3); }
