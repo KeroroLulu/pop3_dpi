@@ -17,7 +17,7 @@ test-parser: lex.yy.c pop.tab.c pop.tab.h
 	$(CC) -o test-parser pop.tab.c lex.yy.c
 
 pop3parser: lex.yy.o  pop.tab.o $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) $(LDFLAGS) -o $@ $^ $(CFLAGS)
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
