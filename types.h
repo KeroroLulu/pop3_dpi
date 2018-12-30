@@ -21,6 +21,15 @@ typedef enum {
     User,
     Pass,
     Apop,
+    Capa,
+    CapaTop,
+    CapaUser,
+    CapaSasl,
+    CapaRespCodes,
+    CapaLoginDelay,
+    CapaPipe,
+    CapaExpire,
+    CapaImpl,
     Quit
 } Type;
 

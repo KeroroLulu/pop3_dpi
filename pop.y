@@ -65,11 +65,20 @@ Value make_string(char* val) {
 %token USER
 %token PASS
 %token APOP
+%token CAPA
+%token SASL
+%token RESPCODES
+%token LOGINDELAY
+%token PIPELINING
+%token EXPIRE
+%token NEVER
+%token IMPLEMENTATION
 
 %type<arg_list> args
 %type<command> resp
 %type<command> req
 %type<command> line
+%type<command> capa
 %type<cmdlist> command
 %type<cmdlist> pop3
 
@@ -86,6 +95,7 @@ command: { $$ = NULL; }
        | resp command { $$ = make_cmdlist_elt($1, $2); }
        | req command { $$ = make_cmdlist_elt($1, $2); }
        | line command { $$ = make_cmdlist_elt($1, $2); }
+       | capa command { $$ = make_cmdlist_elt($1, $2); }
        ;
 
 line: LINE CRLF { Command tmp = { .status = None, .type = Line, .args = make_arg(make_string($1), NULL) }; $$ = tmp; }
@@ -106,7 +116,23 @@ req: QUIT CRLF { Command tmp = { .status = None, .type = Quit, .args = NULL }; $
    | USER SPACE ANY CRLF { Command tmp = { .status = None, .type = User, .args = make_arg(make_string($3), NULL) }; $$ = tmp; }
    | PASS SPACE ANY CRLF { Command tmp = { .status = None, .type = Pass, .args = make_arg(make_string($3), NULL) }; $$ = tmp; }
    | APOP SPACE ANY SPACE ANY CRLF { Command tmp = { .status = None, .type = Apop, .args = make_arg(make_string($3), make_arg(make_string($5), NULL)) }; $$ = tmp; }
+   | CAPA CRLF { Command tmp = { .status = None, .type = Capa, .args = NULL }; $$ = tmp;  }
    ;
+
+capa: TOP CRLF { Command tmp = { .status = None, .type = CapaTop, .args = NULL }; $$ = tmp; }
+    | USER CRLF { Command tmp = { .status = None, .type = CapaUser, .args = NULL }; $$ = tmp; }
+    | SASL SPACE args CRLF { Command tmp = { .status = None, .type = CapaUser, .args = $3 }; $$ = tmp; }
+    | RESPCODES CRLF { Command tmp = { .status = None, .type = CapaRespCodes, .args = NULL }; $$ = tmp; }
+    | LOGINDELAY SPACE NUMBER CRLF { Command tmp = { .status = None, .type = CapaRespCodes, .args = NULL }; $$ = tmp; }
+    | LOGINDELAY SPACE NUMBER SPACE USER CRLF { Command tmp = { .status = None, .type = CapaRespCodes, .args = make_arg(make_int($3), make_arg(make_string("user"), NULL))}; $$ = tmp; }
+    | PIPELINING CRLF { Command tmp = { .status = None, .type = CapaPipe, .args = NULL }; $$ = tmp; }
+    | EXPIRE SPACE NUMBER CRLF  { Command tmp = { .status = None, .type = CapaExpire, .args = make_arg(make_int($3), NULL) }; $$ = tmp; }
+    | EXPIRE SPACE NUMBER SPACE USER CRLF { Command tmp = { .status = None, .type = CapaExpire, .args = make_arg(make_int($3), make_arg(make_string("user"), NULL)) }; $$ = tmp; }
+    | EXPIRE SPACE NEVER CRLF { Command tmp = { .status = None, .type = CapaExpire, .args = make_arg(make_string("never"), NULL) }; $$ = tmp; }
+    | EXPIRE SPACE NEVER SPACE USER CRLF { Command tmp = { .status = None, .type = CapaExpire, .args = make_arg(make_string("never"), make_arg(make_string("user"), NULL)) }; $$ = tmp; }
+    /*| UIDL CRLF { Command tmp = { .status = None, .type = CapaUidl, .args = NULL }; $$ = tmp; }*/
+    | IMPLEMENTATION SPACE args { Command tmp = { .status = None, .type = CapaImpl, .args = $3 }; $$ = tmp;  }
+    ;
 
 resp: OK SPACE args { Command tmp = { .status = Ok, .type = Resp, .args = $3 }; $$ = tmp; }
     | ERR SPACE args { Command tmp = { .status = Err, .type = Resp, .args = $3 }; $$ = tmp; }
