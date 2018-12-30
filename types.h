@@ -21,12 +21,22 @@ typedef enum {
     User,
     Pass,
     Apop,
+    Capa,
+    CapaTop,
+    CapaUser,
+    CapaSasl,
+    CapaRespCodes,
+    CapaLoginDelay,
+    CapaPipe,
+    CapaExpire,
+    CapaImpl,
     Quit
 } Type;
 
 enum EValue {
     EInt,
-    EString
+    EString,
+    ERespCode
 };
 union UValue {
     int UInt;

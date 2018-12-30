@@ -18,7 +18,7 @@
 \+OK { return OK; }
 \-ERR { return ERR; }
 "." { return TERMINATOR; }
-[0-9]+ { return NUMBER; }
+[0-9]{1,40} { return NUMBER; }
 (?i:QUIT) { return QUIT; }
 (?i:LIST) { return LIST; }
 (?i:STAT) { return STAT; }
@@ -31,7 +31,15 @@
 (?i:USER) { return USER; }
 (?i:PASS) { return PASS; }
 (?i:APOP) { return APOP; }
-[a-zA-Z0-9]+ { return ANY; }
+(?i:CAPA) { return CAPA; }
+(?i:SASL) { return SASL; }
+(?i:RESP\-CODES) { return RESPCODES; }
+(?i:LOGIN\-DELAY) { return LOGINDELAY; }
+(?i:PIPELINING) { return PIPELINING; }
+(?i:EXPIRE) { return EXPIRE; }
+(?i:NEVER) { return NEVER; }
+(?i:IMPLEMENTATION) { return IMPLEMENTATION; }
+[a-zA-Z0-9]{1,40} { return ANY; }
 [a-zA-Z0-9 \t\.\-_] { return LINE; }
 %%
 

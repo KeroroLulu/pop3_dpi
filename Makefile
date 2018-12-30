@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-W -Wall -Wextra -pedantic -Wshadow -fsanitize=address
+CFLAGS=-W -Wall -Wextra -pedantic -Wshadow -fsanitize=address -std=gnu11
 LDFLAGS=-lpcap -lasan
 EXEC=pop3parser
 SRC= main.c
