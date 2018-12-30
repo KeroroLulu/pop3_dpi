@@ -321,3 +321,17 @@ l'algorithme MD5 est appliqué à la chaîne
 Qui produit le digest suivant
 
     c4c9334bac560ecc979e58001b3e22fb
+
+## CAPA
+
+# Capacité (réponses à CAPA)
+
+## TOP
+## USER
+## SASL \<supported sasl mechanisms\>
+## RESP-CODES
+## LOGIN-DELAY number [USER]
+## PIPELINING
+## EXPIRE (number|NEVER) [USER]
+## UIDL
+## IMPLEMENTATION \<server implementation informations\>
