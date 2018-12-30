@@ -9,12 +9,37 @@ sur les prérequis du logiciel ainsi que son fonctionnement (compilation et exé
 choisis pour ce projet.
 Il y a toutes les règles qui sont reconnues par le parseur.
 
-## Parseur
+## Utilisation
 
 Nous n'avons pas pu tester le code sur windows et il y a des problèmes sur MacOS.
 Il est donc conseillé d'utiliser un environnement linux pour ce logiciel.
 
-Le parseur utilise `bison`, `flex`, `libpcap` et la version 6 ou supérieur de `gcc/mingw`
+Le logiciel utilise `bison`, `flex`, `libpcap` et `gcc-6` ou bien `mingw-6`
+
+Pour installer ces commandes il suffit de faire :
+
+    sudo apt-get update
+
+    sudo apt-get upgrade
+
+    sudo apt-get install flex bison
+
+ou de manière plus spécifique
+
+    sudo apt-get update
+
+    sudo apt-get install flex
+
+    sudo apt-get install bison
+
+de même pour `libpcap` :
+
+    apt-get install libpcap
+
+Pour compiler le projet il suffit d'aller dans le répertoire pop3_dpi via le terminal
+et exécuter la commande `make`.
+
+## Parseur
 
 `bison` ne permet pas de renvoyer de données. La fonction effectuant le parsing ne renvoie qu'un code d'erreur. Pour récupérer le résultat du parsing, on passe par une variable globale, initialisé dans la fonction `yyparse`. On a créé une fonction utilitaire qui appelle le parser et retourne la variable globale contenant la liste des commandes parsées.
 
