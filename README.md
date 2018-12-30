@@ -16,6 +16,8 @@ Il est donc conseillé d'utiliser un environnement linux pour ce logiciel.
 
 Le parseur utilise `bison`, `flex`, `libpcap` et la version 6 ou supérieur de `gcc/mingw`
 
+`bison` ne permet pas de renvoyer de données. La fonction effectuant le parsing ne renvoie qu'un code d'erreur. Pour récupérer le résultat du parsing, on passe par une variable globale, initialisé dans la fonction `yyparse`. On a créé une fonction utilitaire qui appelle le parser et retourne la variable globale contenant la liste des commandes parsées.
+
 ```c
 Command_list* parse(const char* str)
 {
@@ -26,6 +28,8 @@ Command_list* parse(const char* str)
 }
 ```
 
+`bison` prend en entrée un flux de lexème. C'est pour ça qu'il est souvent associé à un lexer comme `flex` (utilisé ici). Le comportement par défaut de `flex` est de prendre en paramètre un fichier (`FILE*`). Pour lexer une chaîne de caractère, il faut utiliser des fonctions de `flex` pour lui indiquer quelles données prendre en entrée. C'est le but de la fonction `scan_string`.
+
 ```c
 void scan_string(const char* str)
 {
@@ -33,7 +37,7 @@ void scan_string(const char* str)
 }
 ```
 
-voici les morceaux de codes permettant de parser les commandes.
+`bison` permet de créer le parser à partir d'une description de la grammaire du langage interprété. La description de la grammaire (faite dans `pop.y`), est très proche de la définition des commandes dans [pop3.md](POP3.md).
 
 ## Implémentation
 
