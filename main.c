@@ -194,6 +194,7 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
 		data[payload_length] = '\0';
 
 		fprintf (stdout, "%s\n", data);
+        parse (data);
 
 		free (data);
 	}
