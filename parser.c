@@ -51,7 +51,7 @@ void printAndCheckPOP3 (int from, char *cmd, char *params, int param, ...) {
                 switch (va_arg (ap, int)) {
 
                     case PARAM_INT :
-                        fprintf (stdout, "+ [INT]    :");
+                        fprintf (stdout, "+ [INT]    : ");
                         for (int k = 0 ; k < strlen (p) ; k++) {
 
                             if (p[k] < '0' || p[k] > '9') {
@@ -67,15 +67,15 @@ void printAndCheckPOP3 (int from, char *cmd, char *params, int param, ...) {
                         break;
 
                     case PARAM_STRING :
-                        fprintf (stdout, "+ [STRING] :");
+                        fprintf (stdout, "+ [STRING] : ");
                         break;
                 }
 
             } else
-                fprintf (stdout, "+ [??????] :");
+                fprintf (stdout, "+ [??????] : ");
 
             fprintf (stdout, "%s", p);
-            for (int i = 0 ; i < 23 - strlen (p) ; i++)
+            for (int i = 0 ; i < 22 - strlen (p) ; i++)
                     fprintf (stdout, " ");
                 fprintf (stdout, "+\n");
 
@@ -105,6 +105,17 @@ void printAndCheckPOP3 (int from, char *cmd, char *params, int param, ...) {
     fprintf (stdout, "+ -------------------------------- +\n\n");
 }
 
+char *cleanStr (char *data, char *clean) {
+
+    char *str = strdup (data);
+    for (int i = 0 ; i < strlen (data) ; i++) {
+        if (str[i] == '\n' || str[i] == '\r')
+            str[i] = '\0';
+    }
+    str += strlen (clean);
+    return str;
+}
+
 void parser (char *data, int len) {
 
     char *ret;
@@ -117,18 +128,40 @@ void parser (char *data, int len) {
     // Basic command
     } else if ((ret = strstr (data, "DELE ")) != NULL) {
 
+        printAndCheckPOP3 (FROM_CLIENT, "DELE", cleanStr (data, "DELE "), 1, PARAM_INT);
+
     } else if ((ret = strstr (data, "LIST\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "LIST", NULL, 0);
+
+    } else if ((ret = strstr (data, "LIST ")) != NULL) {
+        
+        printAndCheckPOP3 (FROM_CLIENT, "LIST", cleanStr (data, "LIST "), 1, PARAM_INT);
 
     } else if ((ret = strstr (data, "RETR ")) != NULL) {
 
+        printAndCheckPOP3 (FROM_CLIENT, "RETR", cleanStr (data, "RETR "), 1, PARAM_INT);
+
     } else if ((ret = strstr (data, "TOP ")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "TOP", cleanStr (data, "TOP "), 2, PARAM_INT, PARAM_INT);
+
+    } else if ((ret = strstr (data, "TOP")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "TOP", NULL, 0);
 
     } else if ((ret = strstr (data, "STAT\r\n")) != NULL) {
 
+        printAndCheckPOP3 (FROM_CLIENT, "STAT", NULL, 0);
+
     // Misc command
-    } else if ((ret = strstr (data, "APOP\r\n")) != NULL) {
+    } else if ((ret = strstr (data, "APOP ")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "APOP", cleanStr (data, "APOP "), 2, PARAM_STRING, PARAM_STRING);
 
     } else if ((ret = strstr (data, "NOOP\r\n")) != NULL) {
+        
+        printAndCheckPOP3 (FROM_CLIENT, "NOOP", NULL, 0);
 
     } else if ((ret = strstr (data, "QUIT\r\n")) != NULL) {
 
@@ -136,23 +169,48 @@ void parser (char *data, int len) {
 
     } else if ((ret = strstr (data, "RSET\r\n")) != NULL) {
 
+        printAndCheckPOP3 (FROM_CLIENT, "RSET", NULL, 0);
+
+    } else if ((ret = strstr (data, "RST\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "RST", NULL, 0);
+
     } else if ((ret = strstr (data, "UIDL\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "UIDL", cleanStr (data, "UIDL "), 1, PARAM_STRING);
+
+    } else if ((ret = strstr (data, "EXPIRE NEVER\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "EXPIRE", "NEVER", 1, PARAM_STRING);
+
+    } else if ((ret = strstr (data, "EXPIRE ")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "EXPIRE", cleanStr (data, "EXPIRE "), 1, PARAM_INT);
+
+    } else if ((ret = strstr (data, "LOGIN-DELAY ")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "LOGIN-DELAY", cleanStr (data, "LOGIN-DELAY "), 1, PARAM_INT);
 
     } else if ((ret = strstr (data, "CAPA\r\n")) != NULL) {
 
         printAndCheckPOP3 (FROM_CLIENT, "CAPA", NULL, 0);
 
+    } else if ((ret = strstr (data, "IMPLEMENTATION ")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "IMPLEMENTATION", cleanStr (data, "IMPLEMENTATION "), 1, PARAM_STRING);
+
     // Login command
     } else if ((ret = strstr (data, "USER ")) != NULL) {
 
+        printAndCheckPOP3 (FROM_CLIENT, "USER", cleanStr (data, "USER "), 1, PARAM_STRING);
+
     } else if ((ret = strstr (data, "PASS ")) != NULL) {
 
-    // ???
-    } else if ((ret = strstr (data, "SASL\r\n")) != NULL) {
+        printAndCheckPOP3 (FROM_CLIENT, "PASS", cleanStr (data, "PASS "), 1, PARAM_STRING);
 
+    /*
     } else if ((ret = strstr (data, "SASL\r\n")) != NULL) {
-
-    } else if ((ret = strstr (data, "???")) != NULL) {
+    */
 
     }
 }

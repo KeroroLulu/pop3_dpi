@@ -4,7 +4,9 @@
 #include <pcap.h>
 #include <netinet/in.h>
 #include <netinet/if_ether.h>
+#include <stdarg.h>
 
+/*
 #include "types.h"
 #include "pop.tab.h"
 
@@ -20,6 +22,7 @@ Command_list* parse(const char* str) {
     yyparse();
     return list_of_commands___;
 }
+*/
 
 typedef struct client_requests {
 
@@ -42,7 +45,7 @@ p_client_requests create_client_requests (char *data) {
 	pcr->next = NULL;
 
 	return pcr;
-};
+}
 
 char *pop_client_requests (p_client_requests *pcr) {
 
@@ -59,7 +62,7 @@ char *pop_client_requests (p_client_requests *pcr) {
 		*pcr = (*pcr)->next;
 	
 	return data;
-};
+}
 
 void push_client_requests (p_client_requests pcr, char *data) {
 
@@ -75,7 +78,7 @@ void push_client_requests (p_client_requests pcr, char *data) {
 		pcr->next = (struct client_requests *) create_client_requests (data);
 
 	return;
-};
+}
 
 void debug_client_requests (p_client_requests pcr) {
 
@@ -91,7 +94,7 @@ void debug_client_requests (p_client_requests pcr) {
 		fprintf (stdout, "%s\n", pcr->data);
 
 	fprintf (stdout, "------- END -------\n");
-};
+}
 
 /**
  * Display meaningfull information on how to use this program
@@ -99,7 +102,7 @@ void debug_client_requests (p_client_requests pcr) {
 void usage (char *argv[]) {
 
 	fprintf (stdout, "Usage: %s <file.pcap>\n", argv[0]);
-};
+}
 
 /* Finds the payload of a TCP/IP packet */
 void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_char *packet) {
@@ -192,9 +195,12 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
 
 		memcpy (data, payload, raw_length);
 		data[payload_length] = '\0';
-
-		fprintf (stdout, "%s\n", data);
-        parse (data);
+        /*
+        for (int j = 0 ; j <= payload_length ; j++)
+            fprintf (stdout, " 0x%x", data[j]);
+        */
+		fprintf (stdout, "\n<<%s>>\n", data);
+        parser (data, payload_length);
 
 		free (data);
 	}
