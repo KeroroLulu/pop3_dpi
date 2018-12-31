@@ -54,14 +54,14 @@ void printAndCheckPOP3 (int from, char *cmd, char *params, int param, ...) {
     else if (from == FROM_CLIENT)
         fprintf (stdout, "+ CLIENT : [%s]", cmd);
     
-    for (int i = 0 ; i < 22 - strlen (cmd) ; i++)
+    for (int i = 0 ; i < 22 - (int) strlen (cmd) ; i++)
         fprintf (stdout, " ");
 
     fprintf (stdout, "+\n");
     fprintf (stdout, "+ -------------------------------- +\n");
 
     // Display Param
-    if (param > 0 && params == NULL)
+    if (param > 0 && (params == NULL || strlen (params) == 0))
             verdict = VERDICT_TOO_FEW;
     else if (param > 0) {
 
@@ -73,7 +73,7 @@ void printAndCheckPOP3 (int from, char *cmd, char *params, int param, ...) {
 
                     case PARAM_INT :
                         fprintf (stdout, "+ [INT]    : ");
-                        for (int k = 0 ; k < strlen (p) ; k++) {
+                        for (int k = 0 ; k < (int) strlen (p) ; k++) {
 
                             if (p[k] < '0' || p[k] > '9') {
 
@@ -96,7 +96,7 @@ void printAndCheckPOP3 (int from, char *cmd, char *params, int param, ...) {
                 fprintf (stdout, "+ [??????] : ");
 
             fprintf (stdout, "%s", p);
-            for (int i = 0 ; i < 22 - strlen (p) ; i++)
+            for (int i = 0 ; i < 22 - (int) strlen (p) ; i++)
                     fprintf (stdout, " ");
                 fprintf (stdout, "+\n");
 
@@ -129,7 +129,7 @@ void printAndCheckPOP3 (int from, char *cmd, char *params, int param, ...) {
 char *cleanStr (char *data, char *clean) {
 
     char *str = strdup (data);
-    for (int i = 0 ; i < strlen (data) ; i++) {
+    for (int i = 0 ; i < (int) strlen (data) ; i++) {
         if (str[i] == '\n' || str[i] == '\r')
             str[i] = '\0';
     }
@@ -137,7 +137,7 @@ char *cleanStr (char *data, char *clean) {
     return str;
 }
 
-void parser (char *data, int len) {
+void parser (char *data) {
 
     char *ret;
     if ((ret = strstr (data, "+OK")) != NULL) {
@@ -159,6 +159,10 @@ void parser (char *data, int len) {
         fprintf (stdout, "+ -------------------------------- +\n\n");
 
     // Basic command
+    } else if ((ret = strstr (data, "DELE\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "DELE", NULL, 1, PARAM_INT);
+
     } else if ((ret = strstr (data, "DELE ")) != NULL) {
 
         printAndCheckPOP3 (FROM_CLIENT, "DELE", cleanStr (data, "DELE "), 1, PARAM_INT);
@@ -170,6 +174,10 @@ void parser (char *data, int len) {
     } else if ((ret = strstr (data, "LIST ")) != NULL) {
         
         printAndCheckPOP3 (FROM_CLIENT, "LIST", cleanStr (data, "LIST "), 1, PARAM_INT);
+
+    } else if ((ret = strstr (data, "RETR\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "RETR", NULL, 1, PARAM_INT);
 
     } else if ((ret = strstr (data, "RETR ")) != NULL) {
 
@@ -188,6 +196,10 @@ void parser (char *data, int len) {
         printAndCheckPOP3 (FROM_CLIENT, "STAT", NULL, 0);
 
     // Misc command
+    } else if ((ret = strstr (data, "APOP\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "APOP", NULL, 2, PARAM_STRING, PARAM_STRING);
+
     } else if ((ret = strstr (data, "APOP ")) != NULL) {
 
         printAndCheckPOP3 (FROM_CLIENT, "APOP", cleanStr (data, "APOP "), 2, PARAM_STRING, PARAM_STRING);
@@ -216,6 +228,10 @@ void parser (char *data, int len) {
 
         printAndCheckPOP3 (FROM_CLIENT, "UIDL", cleanStr (data, "UIDL "), 1, PARAM_INT);
 
+    } else if ((ret = strstr (data, "EXPIRE\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "EXPIRE", NULL, 1, PARAM_INT);
+
     } else if ((ret = strstr (data, "EXPIRE NEVER\r\n")) != NULL) {
 
         printAndCheckPOP3 (FROM_CLIENT, "EXPIRE", "NEVER", 1, PARAM_STRING);
@@ -223,6 +239,10 @@ void parser (char *data, int len) {
     } else if ((ret = strstr (data, "EXPIRE ")) != NULL) {
 
         printAndCheckPOP3 (FROM_CLIENT, "EXPIRE", cleanStr (data, "EXPIRE "), 1, PARAM_INT);
+
+    } else if ((ret = strstr (data, "LOGIN-DELAY\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "LOGIN-DELAY", NULL, 1, PARAM_INT);
 
     } else if ((ret = strstr (data, "LOGIN-DELAY ")) != NULL) {
 
@@ -232,18 +252,34 @@ void parser (char *data, int len) {
 
         printAndCheckPOP3 (FROM_CLIENT, "CAPA", NULL, 0);
 
+    } else if ((ret = strstr (data, "IMPLEMENTATION\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "IMPLEMENTATION", NULL, 1, PARAM_STRING);
+
     } else if ((ret = strstr (data, "IMPLEMENTATION ")) != NULL) {
 
         printAndCheckPOP3 (FROM_CLIENT, "IMPLEMENTATION", cleanStr (data, "IMPLEMENTATION "), 1, PARAM_STRING);
 
     // Login command
-    } else if ((ret = strstr (data, "AUTH PLAIN\r\n")) != NULL) {
+    } else if ((ret = strstr (data, "AUTH\r\n")) != NULL) {
 
-        printAndCheckPOP3 (FROM_CLIENT, "AUTH", "PLAIN", 1, PARAM_STRING);
+        printAndCheckPOP3 (FROM_CLIENT, "AUTH", NULL, 1, PARAM_STRING);
+
+    } else if ((ret = strstr (data, "AUTH ")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "AUTH", cleanStr (data, "AUTH "), 1, PARAM_STRING);
+
+    } else if ((ret = strstr (data, "USER\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "USER", NULL, 1, PARAM_STRING);
 
     } else if ((ret = strstr (data, "USER ")) != NULL) {
 
         printAndCheckPOP3 (FROM_CLIENT, "USER", cleanStr (data, "USER "), 1, PARAM_STRING);
+
+    } else if ((ret = strstr (data, "PASS\r\n")) != NULL) {
+
+        printAndCheckPOP3 (FROM_CLIENT, "PASS", NULL, 1, PARAM_STRING);
 
     } else if ((ret = strstr (data, "PASS ")) != NULL) {
 
@@ -342,6 +378,9 @@ void usage (char *argv[]) {
 /* Finds the payload of a TCP/IP packet */
 void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_char *packet) {
 
+    u_char *useless = args;
+    args = useless;
+
 	/* First, lets make sure we have an IP packet */
 	struct ether_header *eth_header;
 	eth_header = (struct ether_header *) packet;
@@ -431,7 +470,7 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_c
 		memcpy (data, payload, raw_length);
 		data[payload_length] = '\0';
 		//fprintf (stdout, "\n<<%s>>\n", data);
-        parser (data, payload_length);
+        parser (data);
 
 		free (data);
 	}
