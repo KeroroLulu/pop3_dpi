@@ -1,0 +1,841 @@
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server ready H mimap4 0MHoUr-1VDxRD3Ui5-003eq2
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [CAPA]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [QUIT]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
+1R‰x’&÷[àÆ–˚ÎG6
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ Capability list follows
+TOP
+USER
+UIDL
+STLS
+SASL PLAIN
+IMPLEMENTATION trinity
+.
+
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server signing off
+
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server ready H mimap8 0MHXFQ-1VDgSF1308-003NYq
+
++ -------------------------------- +
+
+AUTH
+
+È∏ﬁÎ?±‡e
++ -------------------------------- +
++ SERVER : [-ERR]                  +
++ -------------------------------- +
+ 1 argument required
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [CAPA]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ Capability list follows
+TOP
+USER
+UIDL
+STLS
+SASL PLAIN
+IMPLEMENTATION trinity
+.
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [AUTH]                  +
++ -------------------------------- +
++ [STRING] : PLAIN                 +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ 
+B™&Øˇ®∂‰ØüÉm
+AGRpZ2l0YWxpbnZlc3RpZ2F0b3JAbmV0d29ya3NpbXMuY29tAG5hcGllcg==
+
++ -------------------------------- +
++ SERVER : [-ERR]                  +
++ -------------------------------- +
+ authentication failed
+
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server ready H mimap9 0MK0or-1VBlin3ixZ-001RVN
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [CAPA]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [QUIT]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
+È<;ÔwñïÑ¿“t$|
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ Capability list follows
+TOP
+USER
+UIDL
+STLS
+SASL PLAIN
+IMPLEMENTATION trinity
+.
+
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server signing off
+
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server ready H mimap13 0MW5rZ-1VayeZ2jFp-00XVZd
+
++ -------------------------------- +
+
+AUTH
+
+(˛t!©n¿‰*ﬁ“$√fŸ
++ -------------------------------- +
++ SERVER : [-ERR]                  +
++ -------------------------------- +
+ 1 argument required
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [CAPA]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ Capability list follows
+TOP
+USER
+UIDL
+STLS
+SASL PLAIN
+IMPLEMENTATION trinity
+.
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [AUTH]                  +
++ -------------------------------- +
++ [STRING] : PLAIN                 +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ 
+VúáäÛèSbôÜ=
+AGRpZ2l0YWxpbnZlc3RpZ2F0b3JAbmV0d29ya3NpbXMuY29tAG5hcGllcjEyMw==
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ mailbox "digitalinvestigator@networksims.com" has 3 messages (19191 octets) H mimap13
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [QUIT]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server signing off
+
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server ready H mimap15 0LfD5x-1VsVU4327M-00pHSn
+
++ -------------------------------- +
+
+AUTH
+
+É–ËõïíÂÕÄàëC±óW
++ -------------------------------- +
++ SERVER : [-ERR]                  +
++ -------------------------------- +
+ 1 argument required
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [CAPA]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ Capability list follows
+TOP
+USER
+UIDL
+STLS
+SASL PLAIN
+IMPLEMENTATION trinity
+.
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [AUTH]                  +
++ -------------------------------- +
++ [STRING] : PLAIN                 +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ 
+Ff&>ÉRUyEå¨•KÌ
+AGRpZ2l0YWxpbnZlc3RpZ2F0b3JAbmV0d29ya3NpbXMuY29tAG5hcGllcjEyMw==
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ mailbox "digitalinvestigator@networksims.com" has 3 messages (19191 octets) H mimap15
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [STAT]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ 3 19191
+⁄äú(
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [LIST]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+
+1 5565
+2 8412
+3 5214
+.
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [UIDL]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+
+1 0M8Oog-1VyW6I2B74-00vNGA
+2 0LalaO-1VwtZq3DAW-00kuzg
+3 0MLPgA-1VC2Ru34ja-000jOl
+.
+
++ -------------------------------- +
+
++ -------------------------------- +
++ CLIENT : [RETR]                  +
++ -------------------------------- +
++ [INT]    : 1                     +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+
+Áàç,p‹ÜUﬂ+^8b
++ -------------------------------- +
+
+Return-Path: <noreply@bounce.unitedinternet.com>
+Delivery-Date: Thu, 22 Aug 2013 21:14:44 +0200
+Received: from mbulk.1and1.com (mbulk.1and1.com [212.227.126.222])
+	by mx.kundenserver.de (node=mxeu0) with ESMTP (Nemesis)
+	id 0M8Oog-1VyW6I2B74-00vNGA for digitalinvestigator@networksims.com; Thu, 22 Aug 2013 21:14:44 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=1and1.co.uk;
+	s=global1; t=1377198884; i=support@1and1.co.uk; bh=wgZdEaS8CGMFeJet
+	6YN26Li8CZo8Y6B9rW5ZPOvk5Ks=; h=MIME-Version:From:Subject:To:
+	 Content-Type:Message-Id:Date; b=jEWHqJ559xXUf/1yZeCcy/IQbHKGJbRqaX
+	3jP8iB+k2130Uthz5RbaLdXxDNrLx1H8RR5NoeiG2K060HWVwHywK6CgHLe5CTDIpDo
+	DhX1YNJOGUTMW/V2H03Loy09kWzYPObADON/bWHJcnucUa46N1IssACeTHIiNZpjz58
+	VaA=
+Received: from omsmail (streamserve3.mt.einsundeins.de [172.19.7.103])
+	by mbulk.1and1.com (node=mbulk2) with ESMTP (Nemesis)
+	id 0M251y-1W5Nip0Pgx-00tHOr; Thu, 22 Aug 2013 21:14:44 +0200
+MIME-Version: 1.0
+From: 1&1 Internet Ltd. <support@1and1.co.uk>
+Subject: A message from 1&1 Internet
+To: digitalinvestigator@networksims.com
+X-Message-ID: 90256101725241684#3
+Content-Type: multipart/alternative; boundary="multipart_alternative.878382066"
+Message-Id: <0M251y-1W5Nip0Pgx-00tHOr@mbulk.1and1.com>
+Date: Thu, 22 Aug 2013 21:14:44 +0200
+X-Provags-ID: V02:K0:p2/TRoKqwwD816cbn/YD4v8DlYZz+czD/ffRyasdUlZ
+ 2qCehsMVLorPcSPk+AVmQ6sGC56UuMGwRiEZGsYsWg1kyWcKRn
+ p3MADLg5bUcPjtSzcNfcyNCJys50lVE90moNktM5MhlCTs
+kY5D
+ Z0e9QxdXccdasz6BRIuhVkOhc9Jpu+IwQGfragWrlDFsQjDVCv
+ B1IqXL/112MUShMwnS1BbQLDhj2i5qNVli0nKr5jnhpmsVNOS3
+ FOVAjswsscmojNg9/d9aM1pHVHxH2I3ALXvsxNtKU1O/pLiO7a
+ /x2TvFTVXp78T7qag/MsTco0NM/Ec6VF7pDZIz2b9M5H7BK4g=
+ =
+Envelope-To: digitalinvestigator@networksims.com
+
+--multipart_alternative.878382066
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello and welcome to your new e-mail account!
+
+Thank you for using 1&1 Internet e-mail services for your e-mail account.=
+=20
+We'd like to take this opportunity to tell you about a feature that is=20
+included in 1&1 e-mail services.=20
+
+WebMail 2.0
+-----------
+Which e-mail client are you using? Is it as flexible and easy to use as=20
+1&1 WebMail?
+
+Try WebMail today. You can reach your e-mail account from any browser=20
+and without installing any software.=20
+
+- Access to your e-mail from any browser. Log in to your account at
+  https://email.1and1.co.uk
+- WebMail is an integral part of 1&1 e-mail services. There are no=20
+  additional fees for using WebMail and there is no software to set up.
+- Keep track of your appointments with your calendar, auto-responder and=20
+  password management directly accessible for each mailbox.=20
+- Professional and versatile layout which we've based on MailXchange,=20
+  a communication and collaboration solution for businesses.
+ =20
+No extra set up needed. You can start using WebMail immedia
+tely!
+
+Log in to your account using your e-mail address and your password at:
+https://webmail.1and1.co.uk=20
+
+For help using WebMail please visit our FAQ:
+http://faq.1and1.co.uk/search/go.php?t=3Dn49907=20
+
+Enjoy the flexibility of using 1&1 WebMail as either your primary e-mail=20
+account or in addition to your local e-mail client.=20
+
+Best regards,
+
+Registered at Cardiff, Company number 3953678  - VAT No GB 752539027
+Aquasulis House, 10-14 Bath Road, Slough, Berkshire, SL1 3SA, United Kingdo=
+m
+
+--multipart_alternative.878382066
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<body>
+Hello and welcome to your new e-mail account!
+<br/>
+<br/>
+Thank you for using 1&amp;1 Internet e-mail services for=20
+your e-mail account. We'd like to take this opportunity
+to tell you about a feature that is included in 1&amp;1=20
+e-mail services.=20
+<br/>
+<br/>
+WebMail 2.0
+<br/>-----------<br/>
+Which e-mail client are you using?
+Is it as flexible and easy to use as 1&amp;1 WebMail?=20
+<br/>
+<br/>
+Try WebMail today. You can reach your e-mail account from=20
+any browser and without installing any software.=20
+<br/>
+<br/>
+<ul>
+<li>Access to your e-mail from any browser. Log in to your account at
+<a href=3D"https://email.1and1.co.uk">https://email.1and1.co.uk</a></li>
+<li>WebMail is an integral part of 1&amp;1 e-mail services. There are no=20
+additional fees for using W
+ebMail and there is no software to set up.</li>
+<li>Keep track of your appointments with your calendar, auto-responder and=
+=20
+password management directly accessible for each mailbox.</li>=20
+<li>Professional and versatile layout which we've based on MailXchange,=20
+a communication and collaboration solution for businesses.</li>
+</ul>
+<br/>
+No extra set up needed. You can start using WebMail immediately!
+<br/>
+<br/>
+Log in to your account using your e-mail address and your=20
+password at:
+<br/>
+<br/>
+<a href=3D"https://webmail.1and1.co.uk">https://webmail.1and1.co.uk</a>=20
+<br/>
+<br/>
+For help using WebMail please visit our FAQ:
+<br/><a href=3D"http://faq.1and1.co.uk/search/go.php?t=3Dn49907">http://faq=
+..1and1.co.uk/search/go.php?t=3Dn49907</a>=20
+<br/>
+<br/>
+Enjoy the flexibility of using 1&amp;1 WebMail as either your primary=20
+e-mail account or in addition to your local e-mail client.=20
+<br/>
+<br/>
+Best regards,<pre>
+
+Registered at Cardiff, Company number 3953678  - VAT No GB 752539027
+Aquasulis House, 10-14 Bath Road, Slough, Berkshire, SL1 3SA, United Kingdo=
+m
+</pre>
+<body>
+</html>
+
+--multipart_alternative.878382066--
+.
+
++ -------------------------------- +
++ CLIENT : [RETR]                  +
++ -------------------------------- +
++ [INT]    : 2                     +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+
+›Ìß6rËqΩcçD
++ -------------------------------- +
+
+Return-Path: <B.Buchanan@napier.ac.uk>
+Delivery-Date: Thu, 22 Aug 2013 21:18:59 +0200
+Received-SPF: pass (mxeu5: domain of napier.ac.uk designates 216.32.180.184 as permitted sender) client-ip=216.32.180.184; envelope-from=B.Buchanan@napier.ac.uk; helo=co1outboundpool.messaging.microsoft.com;
+Received: from co1outboundpool.messaging.microsoft.com (co1ehsobe001.messaging.microsoft.com [216.32.180.184])
+	by mx.kundenserver.de (node=mxeu5) with ESMTP (Nemesis)
+	id 0LalaO-1VwtZq3DAW-00kuzg for digitalinvestigator@networksims.com; Thu, 22 Aug 2013 21:18:59 +0200
+Received: from mail36-co1-R.bigfish.com (10.243.78.252) by
+ CO1EHSOBE010.bigfish.com (10.243.66.73) with Microsoft SMTP Server id
+ 14.1.225.22; Thu, 22 Aug 2013 19:18:56 +0000
+Received: from mail36-co1 (localhost [127.0.0.1])	by mail36-co1-R.bigfish.com
+ (Postfix) with ESMTP id 1F681A001F7	for
+ <digitalinvestigator@networksims.com>; Thu, 22 Aug 2013 19:18:56 +0000 (UTC)
+X-Forefront-Antispam-Report: CIP:146.176.4.2;KIP:(null);UIP:(null);IPV:NLI;H:MER-EXCH2.napier.ac.uk;RD:none;EFVD:NLI
+X-SpamScore: 0
+X-BigFish: VPS0(z569dhzc85fhzz1f42h208ch1ee6h1de0h1d18h1fdah2073h1202h1e76h1d1ah1d2ah1fc6hzz1d7338h17326ah18c673h1de096h8275bh8275dh1de097hz2fh2a8h839hd25hf0ah1288h12a5h12bdh137ah1441h14ddh1504h1537h153bh15d0h162dh1631h1758h18e1h1946h19b5h19ceh1ad9h1b0ah1b2fh1bceh1fb3h1d0ch1d2eh1d3fh1dc1h1dfeh1dffh1e1dh1fe8h1ff5h1155h)
+Received-SPF: pass (mail36-co1: domain of napier.ac.uk 
+designates 146.176.4.2 as permitted sender) client-ip=146.176.4.2; envelope-from=B.Buchanan@napier.ac.uk; helo=MER-EXCH2.napier.ac.uk ;napier.ac.uk ;
+Received: from mail36-co1 (localhost.localdomain [127.0.0.1]) by mail36-co1
+ (MessageSwitch) id 1377199134562697_3355; Thu, 22 Aug 2013 19:18:54 +0000
+ (UTC)
+Received: from CO1EHSMHS025.bigfish.com (unknown [10.243.78.253])	by
+ mail36-co1.bigfish.com (Postfix) with ESMTP id 7CE84C4003F	for
+ <digitalinvestigator@networksims.com>; Thu, 22 Aug 2013 19:18:54 +0000 (UTC)
+Received: from MER-EXCH2.napier.ac.uk (146.176.4.2) by
+ CO1EHSMHS025.bigfish.com (10.243.66.35) with Microsoft SMTP Server (TLS) id
+ 14.16.227.3; Thu, 22 Aug 2013 19:18:54 +0000
+Received: from MER-EXCH1.napier.ac.uk ([fe80::f936:ca4b:b8b2:23c3]) by
+ MER-EXCH2.napier.ac.uk ([fe80::c4c:e335:b1d8:973c%15]) with mapi id
+ 14.02.0318.004; Thu, 22 Aug 2013 20:18:52 +0100
+From: "Buchanan, Bill" <B.Buchanan@napier.ac.uk>
+To: "digitalinvestigator@networksims.com"
+	<digitalinvestigator@networksims.com>
+Subject: Testing
+Thread-Topic: Testing
+Thread-Index: Ac6fbGYXtgSn00khQmGKggSIaX5OQw==
+Date: Thu, 22 Aug 2013 19:18:52 +0000
+Message-ID: <BF8FAC832FD171479CA19CA1FEA2254216D203E1@MER-EXCH1.napier.ac.uk>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [146.176.4.13]
+Content-Type: multipart/alternative;
+	boundary="_000_BF8FAC832FD171479CA19CA1FEA2254216D2
+03E1MEREXCH1napiera_"
+MIME-Version: 1.0
+Return-Path: B.Buchanan@napier.ac.uk
+X-OriginatorOrg: napier.ac.uk
+X-FOPE-CONNECTOR: Id%0$Dn%*$RO%0$TLS%0$FQDN%$TlsDn%
+Envelope-To: digitalinvestigator@networksims.com
+
+--_000_BF8FAC832FD171479CA19CA1FEA2254216D203E1MEREXCH1napiera_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+How are you tooo.....
+
+I am fine.
+
+DI 2
+
+
+Edinburgh Napier University offers industry informed courses which combine =
+the optimum balance of theory and practice to equip graduates for success i=
+n today's competitive global job market. 92.3% of our graduates are in work=
+ or further study within six months of leaving. With over 17,000 students f=
+rom over 110 countries, we are an international University and are also pro=
+ud to be the largest UK provider of higher education in Hong Kong.
+
+This message is intended for the addressee(s) only
+and should not be read, copied or disclosed to anyone else outwith the Univ=
+ersity without the permission of the sender. It is your responsibility to e=
+nsure that this message and any attachments are scanned for viruses or othe=
+r defects. =
+
+Edinburgh Napier University does not accept liability for any loss or
+damage which may result from this email or any attachment, or for errors or=
+ omissions arising after it was sent. Email is not a secure medium. Email e=
+ntering the University's system is subject to ro
+utine monitoring and filter=
+ing by the University. =
+
+
+Edinburgh Napier University is a registered Scottish
+charity.
+Registration number SC018373
+
+
+--_000_BF8FAC832FD171479CA19CA1FEA2254216D203E1MEREXCH1napiera_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-language:EN-US;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+..MsoChpDefau
+lt
+	{mso-style-type:export-only;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-language:EN-US;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-GB" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">How are you tooo&#8230;..<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">I am fine.<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">DI 2<o:p></o:p></p>
+</div>
+<br clear=3Dall> <head>=0D
+<style type=3D"text/css"> .style1 { font-family: Arial; } .style2 { font-si=
+ze: 9.0pt; } .style3 { color: #000000; } </style>=0D
+</head>=0D
+<p><span class=3D"style1"><span class=3D"style2">Edinburgh Napier Universit=
+y offers industry informed courses which combine the optimum balance of the=
+ory and practice to equip graduates for success in today's competitive glob=
+al job market. 92.3% of our graduates are in work or further study within s=
+ix months of leaving. With over 17,000 students from over 110 countries, we=
+ are an international University and are also proud to be the largest UK
+ pr=
+ovider of higher education in Hong Kong. </span></span></p>=0D
+<p><span class=3D"style1"><span class=3D"style2">=0D
+<span class=3D"style1&lt;span class=3D" style1=3D""><span class=3D"style3">=
+This message is intended for the addressee(s) only =0D
+and should not be read, copied or disclosed to anyone else outwith the =0D
+University without the permission of the sender.<br>=0D
+It is your responsibility to ensure that this message and any attachments a=
+re =0D
+scanned for viruses or other defects. Edinburgh Napier University does not =
+=0D
+accept liability for any loss or damage which may result from this email or=
+ any =0D
+attachment, or for errors or omissions arising after it was sent. Email is =
+not a =0D
+secure medium. Email entering the University's system is subject to routine=
+ =0D
+monitoring and filtering by the University.<br>=0D
+<br>=0D
+Edinburgh Napier University is a registered Scottish charity. Registration =
+=0D
+number SC018373</span></span></p>=0D
+</span></span>=0D
+
+</body>
+</html>
+
+
+--_000_BF8FAC832FD171479CA19CA1FEA2254216D203E1MEREXCH1napiera_--
+.
+
++ -------------------------------- +
++ CLIENT : [RETR]                  +
++ -------------------------------- +
++ [INT]    : 3                     +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+
+†Q∂4CänOÃııò
++ -------------------------------- +
+
+Return-Path: <B.Buchanan@napier.ac.uk>
+Delivery-Date: Thu, 22 Aug 2013 21:19:21 +0200
+Received-SPF: pass (mxbap1: domain of napier.ac.uk designates 216.32.180.188 as permitted sender) client-ip=216.32.180.188; envelope-from=B.Buchanan@napier.ac.uk; helo=co1outboundpool.messaging.microsoft.com;
+Received: from co1outboundpool.messaging.microsoft.com (co1ehsobe005.messaging.microsoft.com [216.32.180.188])
+	by mx.kundenserver.de (node=mxbap1) with ESMTP (Nemesis)
+	id 0MLPgA-1VC2Ru34ja-000jOl for digitalinvestigator@networksims.com; Thu, 22 Aug 2013 21:19:21 +0200
+Received: from mail155-co1-R.bigfish.com (10.243.78.249) by
+ CO1EHSOBE015.bigfish.com (10.243.66.78) with Microsoft SMTP Server id
+ 14.1.225.22; Thu, 22 Aug 2013 19:19:18 +0000
+Received: from mail155-co1 (localhost [127.0.0.1])	by
+ mail155-co1-R.bigfish.com (Postfix) with ESMTP id 5F76F7801AF;	Thu, 22 Aug
+ 2013 19:19:18 +0000 (UTC)
+X-Forefront-Antispam-Report: CIP:146.176.4.2;KIP:(null);UIP:(null);IPV:NLI;H:MER-EXCH2.napier.ac.uk;RD:none;EFVD:NLI
+X-SpamScore: -2
+X-BigFish: VPS-2(z569dhz542I1447Izz1f42h208ch1ee6h1de0h1d18h1fdah2073h1202h1e76h1d1ah1d2ah1fc6hzz1de098h177df4h17326ah1de096h1954cbhc704dh8275bh1de097hz2fh2a8h839h944hd25hf0ah1220h1288h12a5h12a9h12bdh137ah13b6h1441h14ddh1504h1537h153bh15d0h162dh1631h1758h18e1h1946h19b5h19ceh1ad9h1b0ah1b2fh1fb3h1d0ch1d2eh1d3fh1dfeh1dffh1e1dh1fe8h1ff5h1155h)
+Received-SPF: pass (mail155-co1: domain of napier.ac.uk designates 146
+.176.4.2 as permitted sender) client-ip=146.176.4.2; envelope-from=B.Buchanan@napier.ac.uk; helo=MER-EXCH2.napier.ac.uk ;napier.ac.uk ;
+Received: from mail155-co1 (localhost.localdomain [127.0.0.1]) by mail155-co1
+ (MessageSwitch) id 1377199155586911_3660; Thu, 22 Aug 2013 19:19:15 +0000
+ (UTC)
+Received: from CO1EHSMHS030.bigfish.com (unknown [10.243.78.233])	by
+ mail155-co1.bigfish.com (Postfix) with ESMTP id 8C36A600053;	Thu, 22 Aug 2013
+ 19:19:15 +0000 (UTC)
+Received: from MER-EXCH2.napier.ac.uk (146.176.4.2) by
+ CO1EHSMHS030.bigfish.com (10.243.66.40) with Microsoft SMTP Server (TLS) id
+ 14.16.227.3; Thu, 22 Aug 2013 19:19:14 +0000
+Received: from MER-EXCH1.napier.ac.uk ([fe80::f936:ca4b:b8b2:23c3]) by
+ MER-EXCH2.napier.ac.uk ([fe80::c4c:e335:b1d8:973c%15]) with mapi id
+ 14.02.0318.004; Thu, 22 Aug 2013 20:19:12 +0100
+From: "Buchanan, Bill" <B.Buchanan@napier.ac.uk>
+To: DI <digitalinvestigator@networksims.com>
+CC: "w_j_buchanan@hotmail.com" <w_j_buchanan@hotmail.com>
+Subject: RE: Testing
+Thread-Topic: Testing
+Thread-Index: AQHOn2xRdWdGPnwS70WTY4VHcrLIv5mhmhbw
+Date: Thu, 22 Aug 2013 19:19:11 +0000
+Message-ID: <BF8FAC832FD171479CA19CA1FEA2254216D203F0@MER-EXCH1.napier.ac.uk>
+References: <521663E3.7090401@networksims.com>
+In-Reply-To: <521663E3.7090401@networksims.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [146.176.4.13]
+Content-Type: te
+xt/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Return-Path: B.Buchanan@napier.ac.uk
+X-OriginatorOrg: napier.ac.uk
+X-FOPE-CONNECTOR: Id%0$Dn%*$RO%0$TLS%0$FQDN%$TlsDn%
+Envelope-To: digitalinvestigator@networksims.com
+
+Thanks for the email.
+
+
+
+
+
+Details:
+Prof. William Buchanan, PhD, FBCS, FIET,
+CEng, BSc (Hons), Cisco Regional Instructor,
+Address:
+Professor of Computing, IIDI/School of Computing,
+Edinburgh Napier University, =
+
+10 Colinton Road, Edinburgh. EH10 5DT
+Tel: =
+
+My New Web:
+Youtube:
+LinkedIn:
+Twitter:
++44 (0)131 455 2759 =
+
+http://asecuritysite.com
+http://youtube.com/billatnapier
+http://www.linkedin.com/in/billatnapier
+http://twitter.com/billatnapier
+Web:
+http://buchananweb.co.uk
+Research page: =
+
+http://www.iidi.napier.ac.uk/c/people/peopleid/79
+Skype
+billatnapier
+
+
+
+
+-----Original Message-----
+From: DI [mailto:digitalinvestigator@networksims.com] =
+
+Sent: 22 August 2013 20:18
+To: Buchanan, Bill
+Cc: w_j_buchanan@hotmail.com
+Subject: Testing
+
+Hello ... how are you?
+
+Bill.
+
+
+Edinburgh Napier University offers industry informed courses which combine =
+the optimum balance of theory and practice to equip graduates for success i=
+n today's competitive global job market. 92.3% of our graduates are in work=
+ or further study within six months of leaving. With over 17,000 students f=
+rom over 110 countries, we are an international U
+niversity and are also pro=
+ud to be the largest UK provider of higher education in Hong Kong.
+
+This message is intended for the addressee(s) only
+and should not be read, copied or disclosed to anyone else outwith the Univ=
+ersity without the permission of the sender. It is your responsibility to e=
+nsure that this message and any attachments are scanned for viruses or othe=
+r defects. =
+
+Edinburgh Napier University does not accept liability for any loss or
+damage which may result from this email or any attachment, or for errors or=
+ omissions arising after it was sent. Email is not a secure medium. Email e=
+ntering the University's system is subject to routine monitoring and filter=
+ing by the University. =
+
+
+Edinburgh Napier University is a registered Scottish
+charity.
+Registration number SC018373
+
+
+.
+
++ -------------------------------- +
++ CLIENT : [QUIT]                  +
++ -------------------------------- +
++ Verdict : OK                     +
++ -------------------------------- +
+
++ -------------------------------- +
++ SERVER : [+OK]                   +
++ -------------------------------- +
+ POP server signing off
+
++ -------------------------------- +
+
